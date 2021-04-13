@@ -11,15 +11,17 @@ void setup(){
     balls = new ArrayList<Ball>();
     nbBalls = 3000;
     SPEED = 5;
-    table = new Table();
+    table = new Table(250);
 
     for(int i=0; i<nbBalls; i++){
-        balls.add(new Ball(width/2, height/2, i*TWO_PI/nbBalls));
+        balls.add(new Ball(new Point(width/2, height/2), i*TWO_PI/nbBalls));
     }
 }
 
 void draw(){
     background(0);
+
+    table.display();
     
     for(Ball ball : balls){
         ball.update();
@@ -27,8 +29,8 @@ void draw(){
     }
 }
 
-void circle(float x, float y, float r){
-    ellipse(x, y, r*2, r*2);
+void circle(Point c, float r){
+    ellipse(c.x, c.y, r*2, r*2);
 }
 
 void mousePressed() {

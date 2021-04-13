@@ -1,28 +1,25 @@
 class Ball{
     float angle;
-    float posX;
-    float posY;
     float radius;
+    Point center;
 
-    Ball(float x, float y, float a){
+    Ball(Point _c, float a){
         this.angle = a;
-        this.posX = x;
-        this.posY = y;
+        this.center = _c;
 
         this.radius = 1;
     }
 
     void display(){
-        // stroke(255, 2);
         // fill(255, 2);
-        stroke(255);
-        fill(255);
-        circle(this.posX, this.posY, this.radius);
+        noStroke();
+        fill(255, 10);
+        circle(this.center, this.radius);
     }
     void update(){
         if(!table.collide(this)){
-            this.posX += SPEED * cos(this.angle);
-            this.posY += SPEED * sin(this.angle);
+            this.center.x += SPEED * cos(this.angle);
+            this.center.y += SPEED * sin(this.angle);
         }
     }
 }
